@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Assam Nepali Sahitya Sabha – Preserving Language, Culture & Literature of the Nepali community in Assam since decades.">
+    <title>Assam Nepali Sahitya Sabha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --crimson: #8B1A1A;
+            --crimson-dark: #5C0F0F;
+            --crimson-light: #C0392B;
+            --maroon: #4A0E0E;
+            --ivory: #FAF6EF;
+            --cream: #F2EAD8;
+            --gold: #C9922A;
+            --gold-light: #E8B84B;
+            --gold-pale: #F5E6C0;
+            --charcoal: #1E1611;
+            --text-body: #2C1F14;
+            --text-muted: #6B5240;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--ivory);
+            color: var(--text-body);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        /* ── NAVBAR ── */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: transparent;
+            transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+        }
+
+        #navbar.scrolled {
+            background: rgba(30, 10, 5, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-emblem {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 20px;
+            color: var(--maroon);
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 2px rgba(201, 146, 42, 0.4);
+        }
+
+        .nav-title-wrap span:first-child {
+            display: block;
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-title-wrap span:last-child {
+            display: block;
+            font-size: 10px;
+            font-weight: 300;
+            color: var(--gold-light);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.82);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-light);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: var(--gold);
+            color: var(--maroon) !important;
+            padding: 8px 20px !important;
+            border-radius: 2px !important;
+            font-weight: 500 !important;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold-light) !important;
+        }
+
+        .nav-btn::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: #fff;
+            transition: var(--transition);
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 10, 5, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--ivory);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold-light);
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 70% 50%, rgba(139, 26, 26, 0.35) 0%, transparent 60%),
+                linear-gradient(160deg, #1E0A05 0%, #2C0D09 40%, #1A0808 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201, 146, 42, 0.5) 60px, rgba(201, 146, 42, 0.5) 61px),
+                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201, 146, 42, 0.5) 60px, rgba(201, 146, 42, 0.5) 61px);
+        }
+
+        .hero-mandala {
+            position: absolute;
+            right: -180px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 680px;
+            height: 680px;
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .hero-eyebrow::after {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 600;
+            color: #fff;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-light);
+            display: block;
+            font-size: 0.75em;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-family: var(--serif);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.65);
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--maroon);
+            padding: 14px 36px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 146, 42, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 13px 36px;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-light);
+            color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(201, 146, 42, 0.6), transparent);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(6px);
+            }
+        }
+
+        /* ── SECTIONS COMMON ── */
+        section {
+            padding: 100px 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--crimson);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            background: var(--ivory);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-frame {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--crimson) 100%);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-frame-inner {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-frame-glyph {
+            font-family: var(--serif);
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.12);
+            line-height: 1;
+            display: block;
+            font-style: italic;
+        }
+
+        .about-frame-quote {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-badge strong {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1;
+        }
+
+        .about-badge span {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--maroon);
+            font-weight: 500;
+        }
+
+        .about-content .section-subtitle {
+            max-width: 100%;
+        }
+
+        .about-pillars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar {
+            border-left: 2px solid var(--gold);
+            padding: 1rem 1.2rem;
+            background: var(--cream);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .pillar h4 {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--crimson);
+            margin-bottom: 0.3rem;
+        }
+
+        .pillar p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── ACTIVITIES ── */
+        #activities {
+            background: var(--charcoal);
+            color: #fff;
+        }
+
+        #activities .section-title {
+            color: var(--ivory);
+        }
+
+        #activities .section-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .activities-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .event-card {
+            background: var(--charcoal);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .event-card:hover {
+            background: #2A1510;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--gold);
+            transition: height 0.4s ease;
+        }
+
+        .event-card:hover::before {
+            height: 100%;
+        }
+
+        .event-tag {
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .event-card h3 {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .event-card p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.45);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.06em;
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ── QUOTE SECTION ── */
+        #quotes {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .quote-ornament {
+            font-family: var(--serif);
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.25;
+            line-height: 0.5;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .featured-quote {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--charcoal);
+            max-width: 820px;
+            margin: 0 auto 2rem;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .quote-attribution {
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .quotes-carousel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .quote-mini {
+            background: #fff;
+            padding: 2rem;
+            border-bottom: 2px solid var(--gold);
+            text-align: left;
+        }
+
+        .quote-mini blockquote {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .quote-mini cite {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        /* ── GALLERY ── */
+        #gallery {
+            background: var(--ivory);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 200px);
+            gap: 6px;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem;
+        }
+
+        .gallery-placeholder-icon {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .gallery-placeholder-text {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Gallery items with color themes */
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(135deg, #2C0D09 0%, #5C1A1A 100%);
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, #1a1006 0%, #3d2810 100%);
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, #0d1a0d 0%, #1a3a1a 100%);
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a3a 100%);
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, #1a1006 0%, #4A3012 100%);
+        }
+
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, #1a0d0d 0%, #3a1515 100%);
+        }
+
+        .gallery-item:nth-child(7) {
+            background: linear-gradient(135deg, #0d1a0d 0%, #2a3a1a 100%);
+        }
+
+        .gallery-item .gallery-placeholder-icon {
+            color: rgba(201, 146, 42, 0.5);
+            font-size: 3rem;
+        }
+
+        .gallery-item .gallery-placeholder-text {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder-icon {
+            font-size: 5rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 10, 5, 0);
+            transition: background 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(30, 10, 5, 0.6);
+        }
+
+        .gallery-caption {
+            font-size: 12px;
+            color: #fff;
+            font-weight: 400;
+            opacity: 0;
+            transition: opacity 0.3s;
+            letter-spacing: 0.04em;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* ── MEMBERS ── */
+        #members {
+            background: var(--charcoal);
+        }
+
+        #members .section-title {
+            color: var(--ivory);
+        }
+
+        #members .section-subtitle {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+
+        .member-card {
+            text-align: center;
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 146, 42, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 600;
+            background: rgba(201, 146, 42, 0.08);
+            color: var(--gold);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .member-card:hover .member-avatar {
+            border-color: var(--gold);
+            background: rgba(201, 146, 42, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-name {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 0.25rem;
+        }
+
+        .member-role {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* ── TIMELINE ── */
+        #history {
+            background: var(--cream);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 3rem 3rem;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .timeline-item:hover {
+            opacity: 1;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--cream);
+        }
+
+        .timeline-year {
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-event {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── NEWSLETTER ── */
+        #newsletter {
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--crimson-dark) 100%);
+            text-align: center;
+            padding: 80px 2rem;
+        }
+
+        #newsletter .section-title {
+            color: var(--ivory);
+        }
+
+        #newsletter .section-subtitle {
+            color: rgba(255, 255, 255, 0.55);
+            margin: 0 auto 2.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            max-width: 480px;
+            margin: 0 auto;
+            border: 1px solid rgba(201, 146, 42, 0.4);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            padding: 14px 20px;
+            color: #fff;
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .newsletter-form button {
+            background: var(--gold);
+            color: var(--maroon);
+            border: none;
+            padding: 14px 28px;
+            font-family: var(--sans);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--ivory);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            background: var(--gold-pale);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .contact-detail div p:first-child {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .contact-detail div p:last-child {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 12px 16px;
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            color: var(--text-body);
+            outline: none;
+            border-radius: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--crimson);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .form-submit:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 26, 26, 0.3);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0F0605;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.7;
+            margin-top: 1rem;
+            max-width: 280px;
+        }
+
+        .footer-col h5 {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-bottom span {
+            color: var(--gold);
+        }
+
+        /* ── LANG TOGGLE ── */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 6px 14px;
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: var(--maroon);
+        }
+
+        /* ── FADE IN ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .fade-in-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* ── DIVIDER ── */
+        .ornamental-divider {
+            text-align: center;
+            margin: 0 auto 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .ornamental-divider::before,
+        .ornamental-divider::after {
+            content: '';
+            flex: 1;
+            max-width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .ornamental-divider::after {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .ornamental-divider span {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-visual {
+                max-width: 400px;
+            }
+
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-rows: repeat(4, 180px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 1.5rem;
+            }
+
+            .nav-links,
+            .nav-btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quotes-carousel {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(5, 160px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .about-pillars {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-actions .btn-primary,
+            .hero-actions .btn-outline {
+                width: 220px;
+                text-align: center;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 2px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--gold);
+            padding: 0;
+        }
+
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-item {
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(74, 14, 14, 0.15);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(74, 14, 14, 0.65);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                border-right: 1px solid rgba(74, 14, 14, 0.15);
+            }
+
+            .stat-item:nth-child(2),
+            .stat-item:nth-child(4) {
+                border-right: none;
+            }
+
+            .stat-item:nth-child(1),
+            .stat-item:nth-child(2) {
+                border-bottom: 1px solid rgba(74, 14, 14, 0.15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-brand">
+                <div class="nav-emblem"></div>
+                <div class="nav-title-wrap">
+                    <span>Assam Nepali Sahitya Sabha</span>
+                    <span>Est. 1945 · Guwahati</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#members">Committee</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#contact" class="nav-btn">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" onclick="closeMobile()">About</a>
+        <a href="#activities" onclick="closeMobile()">Activities</a>
+        <a href="#gallery" onclick="closeMobile()">Gallery</a>
+        <a href="#members" onclick="closeMobile()">Committee</a>
+        <a href="#history" onclick="closeMobile()">History</a>
+        <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-pattern"></div>
+        <svg class="hero-mandala" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <circle cx="100" cy="100" r="90" stroke="gold" stroke-width="0.5" />
+            <circle cx="100" cy="100" r="70" stroke="gold" stroke-width="0.5" />
+            <circle cx="100" cy="100" r="50" stroke="gold" stroke-width="0.5" />
+            <circle cx="100" cy="100" r="30" stroke="gold" stroke-width="0.5" />
+            <line x1="100" y1="10" x2="100" y2="190" stroke="gold" stroke-width="0.3" />
+            <line x1="10" y1="100" x2="190" y2="100" stroke="gold" stroke-width="0.3" />
+            <line x1="36" y1="36" x2="164" y2="164" stroke="gold" stroke-width="0.3" />
+            <line x1="164" y1="36" x2="36" y2="164" stroke="gold" stroke-width="0.3" />
+            <polygon points="100,15 112,88 185,100 112,112 100,185 88,112 15,100 88,88" stroke="gold" stroke-width="0.4"
+                fill="none" />
+        </svg>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">Preserving Heritage Since 1945</div>
+            <h1 class="hero-title">
+                Assam Nepali
+                <em>Sahitya Sabha</em>
+            </h1>
+            <p class="hero-tagline">"Preserving Language, Culture &amp; Literature"</p>
+            <div class="hero-actions">
+                <a href="#about" class="btn-primary">Explore</a>
+                <a href="#activities" class="btn-outline">Our Activities</a>
+            </div>
+        </div>
+        <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item fade-in">
+                <div class="stat-number">75+</div>
+                <div class="stat-label">Years of Service</div>
+            </div>
+            <div class="stat-item fade-in fade-in-delay-1">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Members</div>
+            </div>
+            <div class="stat-item fade-in fade-in-delay-2">
+                <div class="stat-number">120+</div>
+                <div class="stat-label">Events Organized</div>
+            </div>
+            <div class="stat-item fade-in fade-in-delay-3">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Publications</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-visual fade-in">
+                    <div class="about-frame">
+                        <div class="about-frame-inner">
+                            <span class="about-frame-glyph">साहित्य</span>
+                            <p class="about-frame-quote">"भाषा हाम्रो पहिचान हो, साहित्य हाम्रो आत्मा।"</p>
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <strong>1945</strong>
+                        <span>Founded</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="section-label fade-in">About the Organisation</div>
+                    <h2 class="section-title fade-in fade-in-delay-1">A Legacy of <em>Language &amp; Literature</em>
+                    </h2>
+                    <p class="section-subtitle fade-in fade-in-delay-2">
+                        Assam Nepali Sahitya Sabha is the premier literary and cultural organisation of the
+                        Nepali-speaking community in Assam. Founded in 1945, we have been the torchbearer of Nepali
+                        language, literature, and cultural heritage across the region for generations.
+                    </p>
+                    <p class="section-subtitle fade-in fade-in-delay-3" style="margin-top:1rem;">
+                        We strive to connect the Nepali diaspora in Assam through literature, arts, and community
+                        programs, ensuring that our language and culture flourish across generations.
+                    </p>
+                    <div class="about-pillars">
+                        <div class="pillar fade-in fade-in-delay-1">
+                            <h4>Our Mission</h4>
+                            <p>Preserve and promote Nepali language and literature in Assam through sustained cultural
+                                engagement.</p>
+                        </div>
+                        <div class="pillar fade-in fade-in-delay-2">
+                            <h4>Our Vision</h4>
+                            <p>A thriving Nepali literary community that bridges tradition with modernity for future
+                                generations.</p>
+                        </div>
+                        <div class="pillar fade-in fade-in-delay-3">
+                            <h4>Core Values</h4>
+                            <p>Cultural integrity, community service, literary excellence, and inclusive participation.
+                            </p>
+                        </div>
+                        <div class="pillar fade-in fade-in-delay-4">
+                            <h4>Reach</h4>
+                            <p>Active chapters across Assam with a network spanning the Northeast Indian Nepali
+                                community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activities">
+        <div class="section-inner">
+            <div class="activities-header">
+                <div>
+                    <div class="section-label" style="color:rgba(201,146,42,0.8)">What We Do</div>
+                    <h2 class="section-title fade-in">Events &amp; <em style="color:var(--gold-light)">Activities</em>
+                    </h2>
+                    <p class="section-subtitle fade-in fade-in-delay-1">Celebrating culture, fostering literature, and
+                        building community through meaningful events throughout the year.</p>
+                </div>
+                <a href="#contact" class="btn-primary fade-in">Get Involved</a>
+            </div>
+            <div class="events-grid">
+                <div class="event-card fade-in">
+                    <div class="event-tag">Annual Event</div>
+                    <h3>Sahitya Samaroh</h3>
+                    <p>Our flagship annual literary festival bringing together poets, writers and scholars from across
+                        Assam and the Northeast for readings, discussions, and awards.</p>
+                    <div class="event-meta">
+                        <span>📅 March 2025</span>
+                        <span>📍 Guwahati</span>
+                    </div>
+                </div>
+                <div class="event-card fade-in fade-in-delay-1">
+                    <div class="event-tag">Cultural Program</div>
+                    <h3>Baisakh Utsav</h3>
+                    <p>A vibrant New Year celebration showcasing traditional Nepali music, dance, and cuisine, fostering
+                        cultural pride among younger generations in Assam.</p>
+                    <div class="event-meta">
+                        <span>📅 April 2025</span>
+                        <span>📍 Multiple Venues</span>
+                    </div>
+                </div>
+                <div class="event-card fade-in fade-in-delay-2">
+                    <div class="event-tag">Publication</div>
+                    <h3>Sahitya Patrika</h3>
+                    <p>Our biannual literary journal publishing original poetry, short fiction, essays and critical
+                        works by Nepali writers across Assam and beyond.</p>
+                    <div class="event-meta">
+                        <span>📅 Biannual</span>
+                        <span>📍 Print & Digital</span>
+                    </div>
+                </div>
+                <div class="event-card fade-in">
+                    <div class="event-tag">Workshop</div>
+                    <h3>Yuwa Lekhak Karyashala</h3>
+                    <p>Youth writing workshops nurturing the next generation of Nepali literary voices through
+                        mentorship, craft sessions, and creative feedback.</p>
+                    <div class="event-meta">
+                        <span>📅 Quarterly</span>
+                        <span>📍 Guwahati</span>
+                    </div>
+                </div>
+                <div class="event-card fade-in fade-in-delay-1">
+                    <div class="event-tag">Commemoration</div>
+                    <h3>Bhanubhakta Jayanti</h3>
+                    <p>An annual celebration honoring Bhanubhakta Acharya, the Aadikavi of Nepali literature, with
+                        recitations, cultural programs, and literary tributes.</p>
+                    <div class="event-meta">
+                        <span>📅 July 2025</span>
+                        <span>📍 Guwahati & Districts</span>
+                    </div>
+                </div>
+                <div class="event-card fade-in fade-in-delay-2">
+                    <div class="event-tag">Community</div>
+                    <h3>Nepali Language Classes</h3>
+                    <p>Free Nepali language and script classes for children and adults, ensuring the mother tongue is
+                        passed on to new generations in Assam.</p>
+                    <div class="event-meta">
+                        <span>📅 Weekly</span>
+                        <span>📍 Guwahati</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section id="quotes">
+        <div class="section-inner">
+            <div class="ornamental-divider"><span>❝</span></div>
+            <blockquote class="featured-quote fade-in">
+                "साहित्यले मानव हृदयलाई उज्यालो बनाउँछ, संस्कृतिले हाम्रो जराहरू मजबुत राख्छ।"
+            </blockquote>
+            <p class="quote-attribution fade-in fade-in-delay-1">— Assam Nepali Sahitya Sabha</p>
+
+            <div class="quotes-carousel">
+                <div class="quote-mini fade-in">
+                    <blockquote>"Literature is the mirror of a society's soul — it reflects both our glories and our
+                        struggles with equal honesty."</blockquote>
+                    <cite>— Laxmi Prasad Devkota</cite>
+                </div>
+                <div class="quote-mini fade-in fade-in-delay-1">
+                    <blockquote>"जहाँ भाषा छ, त्यहाँ पहिचान छ। जहाँ साहित्य छ, त्यहाँ सभ्यता छ।"</blockquote>
+                    <cite>— Bhanubhakta Acharya</cite>
+                </div>
+                <div class="quote-mini fade-in fade-in-delay-2">
+                    <blockquote>"The rivers of Assam and the mountains of Nepal share one spirit in us — the spirit of
+                        language and belonging."</blockquote>
+                    <cite>— Community Voice</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <div class="section-inner">
+            <div class="section-label fade-in">Visual Archive</div>
+            <h2 class="section-title fade-in fade-in-delay-1">Moments &amp; <em>Memories</em></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">🎭</div>
+                        <div class="gallery-placeholder-text">Sahitya Samaroh 2024</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Annual Literary Festival — March
+                            2024</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">🎵</div>
+                        <div class="gallery-placeholder-text">Baisakh Utsav</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">New Year Celebrations</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">📚</div>
+                        <div class="gallery-placeholder-text">Book Launch</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Publication Release</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">✍️</div>
+                        <div class="gallery-placeholder-text">Youth Workshop</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Yuwa Lekhak Karyashala</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">🌸</div>
+                        <div class="gallery-placeholder-text">Cultural Program</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Bhanubhakta Jayanti 2023</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">🎤</div>
+                        <div class="gallery-placeholder-text">Poetry Evening</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Kavi Sammelan</span></div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <div class="gallery-placeholder-icon">🏆</div>
+                        <div class="gallery-placeholder-text">Award Ceremony</div>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Literary Awards 2023</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERS / COMMITTEE -->
+    <section id="members">
+        <div class="section-inner">
+            <div class="section-label" style="color:rgba(201,146,42,0.7)">Leadership</div>
+            <h2 class="section-title fade-in">Executive <em style="color:var(--gold-light)">Committee</em></h2>
+            <p class="section-subtitle fade-in fade-in-delay-1">Dedicated individuals steering the literary and cultural
+                mission of our organisation.</p>
+            <div class="members-grid">
+                <div class="member-card fade-in">
+                    <div class="member-avatar">SG</div>
+                    <div class="member-name">Surya Gurung</div>
+                    <div class="member-role">President</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-1">
+                    <div class="member-avatar">PM</div>
+                    <div class="member-name">Prabha Mukhia</div>
+                    <div class="member-role">Vice President</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-2">
+                    <div class="member-avatar">BR</div>
+                    <div class="member-name">Binod Rai</div>
+                    <div class="member-role">General Secretary</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-3">
+                    <div class="member-avatar">KL</div>
+                    <div class="member-name">Kamala Limbu</div>
+                    <div class="member-role">Cultural Secretary</div>
+                </div>
+                <div class="member-card fade-in">
+                    <div class="member-avatar">DS</div>
+                    <div class="member-name">Deepak Subba</div>
+                    <div class="member-role">Treasurer</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-1">
+                    <div class="member-avatar">AR</div>
+                    <div class="member-name">Anita Rana</div>
+                    <div class="member-role">Literary Secretary</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-2">
+                    <div class="member-avatar">MT</div>
+                    <div class="member-name">Manoj Tamang</div>
+                    <div class="member-role">Publication Head</div>
+                </div>
+                <div class="member-card fade-in fade-in-delay-3">
+                    <div class="member-avatar">SK</div>
+                    <div class="member-name">Sushila Kharel</div>
+                    <div class="member-role">Youth Coordinator</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORY TIMELINE -->
+    <section id="history">
+        <div class="section-inner">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
+                <div>
+                    <div class="section-label fade-in">Our Journey</div>
+                    <h2 class="section-title fade-in fade-in-delay-1">A <em>History</em> of Legacy</h2>
+                    <p class="section-subtitle fade-in fade-in-delay-2">From humble beginnings to a celebrated
+                        institution — the story of Assam Nepali Sahitya Sabha.</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1945</div>
+                        <div class="timeline-event">Foundation of the Sabha</div>
+                        <div class="timeline-desc">A group of visionary Nepali literary figures in Guwahati established
+                            the Sabha to preserve Nepali language and culture in Assam.</div>
+                    </div>
+                    <div class="timeline-item fade-in fade-in-delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1962</div>
+                        <div class="timeline-event">First Sahitya Patrika Published</div>
+                        <div class="timeline-desc">Launch of the literary journal which became the voice of Nepali
+                            literature in Northeast India.</div>
+                    </div>
+                    <div class="timeline-item fade-in fade-in-delay-2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1980</div>
+                        <div class="timeline-event">Inaugural Sahitya Samaroh</div>
+                        <div class="timeline-desc">The first annual literary festival, now the most celebrated Nepali
+                            cultural event in Assam.</div>
+                    </div>
+                    <div class="timeline-item fade-in fade-in-delay-3">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2005</div>
+                        <div class="timeline-event">Diamond Jubilee Celebration</div>
+                        <div class="timeline-desc">60th anniversary marked with state-wide cultural programs, awards,
+                            and a commemorative publication.</div>
+                    </div>
+                    <div class="timeline-item fade-in fade-in-delay-4">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-event">Digital Expansion</div>
+                        <div class="timeline-desc">Launch of digital archives, online publications, and virtual events
+                            to reach the global Nepali diaspora.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter">
+        <div class="section-inner" style="max-width:700px; text-align:center;">
+            <div class="section-label fade-in" style="justify-content:center; color:rgba(201,146,42,0.8);">Stay
+                Connected</div>
+            <h2 class="section-title fade-in fade-in-delay-1" style="color:var(--ivory);">Join Our <em
+                    style="color:var(--gold-light)">Community</em></h2>
+            <p class="section-subtitle fade-in fade-in-delay-2"
+                style="color:rgba(255,255,255,0.5); margin:0 auto 2.5rem;">Subscribe for updates on events,
+                publications, and cultural programs from Assam Nepali Sahitya Sabha.</p>
+            <div class="newsletter-form fade-in fade-in-delay-3">
+                <input type="email" placeholder="Enter your email address">
+                <button type="button">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-inner">
+            <div class="section-label fade-in">Get in Touch</div>
+            <h2 class="section-title fade-in fade-in-delay-1" style="margin-bottom:3rem;">Contact <em>Us</em></h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>We'd love to hear from you</h3>
+                    <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:2rem; line-height:1.75;">
+                        Whether you are interested in membership, want to contribute to our publications, or wish to
+                        collaborate on a cultural program, reach out to us.
+                    </p>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <p>Address</p>
+                            <p>Nepali Sahitya Sabha Bhawan,<br>Fancy Bazar, Guwahati – 781001, Assam</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <p>Phone</p>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <p>Email</p>
+                            <p>info@assamnepaliliterature.org</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <p>Office Hours</p>
+                            <p>Mon – Sat: 10:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem; display:flex; gap:0.75rem;">
+                        <div class="lang-toggle">
+                            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                            <button class="lang-btn" onclick="setLang('np')">नेपाली</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in fade-in-delay-1">
+                    <div class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <select>
+                                <option value="">Select a topic</option>
+                                <option>Membership Enquiry</option>
+                                <option>Event Collaboration</option>
+                                <option>Publication Submission</option>
+                                <option>Cultural Program</option>
+                                <option>General Enquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Share your thoughts or enquiry..."></textarea>
+                        </div>
+                        <button class="form-submit">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-brand" style="text-decoration:none;">
+                        <div class="nav-emblem" style="width:40px;height:40px;font-size:18px;">अ</div>
+                        <div class="nav-title-wrap">
+                            <span>Assam Nepali Sahitya Sabha</span>
+                            <span>Est. 1945 · Guwahati, Assam</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to preserving and promoting the Nepali language, literature, and cultural heritage in
+                        Assam and across Northeast India since 1945.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#members">Committee</a></li>
+                        <li><a href="#history">History</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Publications</h5>
+                    <ul>
+                        <li><a href="#">Sahitya Patrika</a></li>
+                        <li><a href="#">Annual Report</a></li>
+                        <li><a href="#">Poetry Collections</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Assam Nepali Sahitya Sabha. All rights reserved. <span>साहित्यले जीवन बनाउँछ।</span></p>
+                <p style="font-size:11px; color:rgba(255,255,255,0.15);">Designed with cultural pride</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Hamburger
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        function closeMobile() {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Fade in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Language toggle
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Hero already visible
+        document.querySelectorAll('#hero .hero-content *').forEach(el => {
+            if (el.classList.contains('fade-in')) el.classList.add('visible');
+        });
+
+        // Contact form
+        document.querySelector('.form-submit').addEventListener('click', function () {
+            this.textContent = 'Message Sent ✓';
+            this.style.background = '#2d6e2d';
+            setTimeout(() => {
+                this.textContent = 'Send Message';
+                this.style.background = '';
+            }, 3000);
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter-form button').addEventListener('click', function () {
+            const input = this.previousElementSibling;
+            if (input.value.includes('@')) {
+                this.textContent = 'Subscribed ✓';
+                this.style.background = '#2d6e2d';
+                this.style.color = '#fff';
+                input.value = '';
+                setTimeout(() => {
+                    this.textContent = 'Subscribe';
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+
+</html>
